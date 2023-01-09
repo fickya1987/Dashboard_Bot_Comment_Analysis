@@ -110,7 +110,8 @@ with placeholder.container():
                      "which are currently present and haven't been deleted and red color represents the comments which "
                      "got removed from respective subreddit")
             st.write(
-                "Most of the brandmentions are made in Testosterone \n PEDs and TransDIY are subreddits in which bot "
+                "Most of the brandmentions are made in Testosterone")
+            st.write("PEDs and TransDIY are subreddits in which bot "
                 "comments got removed ")
 
         fig = px.bar(data_frame=df, x="subreddit", color="status",
