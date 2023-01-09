@@ -160,7 +160,11 @@ with placeholder.container():
     st.markdown("### Detailed Data View")
     # status_filter = st.sidebar.selectbox("View Dashboard According to", pd.unique(df["claimed"]))
 
-    st.dataframe(df)
+
+    status_filter = st.selectbox("Select status to view the data", pd.unique(df["status"]))
+    # dataframe filter
+    df_refined = df[df["status"] == status_filter]
+    st.dataframe(df_refined)
 
     # fig_col3, fig_col4 = st.columns(2)
     # # color_discrete_map = {"Removed": 'red', "Accepted": "green"}
