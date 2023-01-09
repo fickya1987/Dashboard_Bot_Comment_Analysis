@@ -6,7 +6,7 @@ import plotly.express as px  # interactive charts
 import streamlit as st  # 🎈 data web app development
 
 st.set_page_config(
-    page_title="Real-Time Data Science Dashboard",
+    page_title="Dashboard Bot Analysis",
     page_icon="✅",
     layout="wide",
 )
@@ -25,6 +25,7 @@ df = get_data()
 
 # dashboard title
 st.title("Reddit Brandmention Comment Analysis Dashboard")
+st.write("Date Range: 12/15/2022 - 01/06/2023")
 
 # creating a single-element container
 placeholder = st.empty()
@@ -48,8 +49,6 @@ for status1 in claimed_status:
         total_claimed = total_claimed + 1
     # else:
     #     removed_comments = removed_comments + 1
-
-
 
 with placeholder.container():
     # job_filter = st.selectbox("Select the Job", pd.unique(df["subreddit"]))
@@ -100,34 +99,46 @@ with placeholder.container():
 
     # create two columns for charts
 
-    fig_col1,fig_col2= st.columns(2)
+    fig_col1, fig_col2 = st.columns(2)
     # color_discrete_map = {"Removed": 'red', "Present": "green"}
     color_discrete_map = {"Removed": 'red', "Present": "green"}
     with fig_col1:
         st.markdown("### Comment status according to subreddit")
-        st.write("This figure depicts the number of comments according to subreddit. Green color depicts comments "
-                 "which are currently present and haven't been deleted and red color represents the comments which "
-                 "got removed from subreddit")
-        st.write("Most of the brandmentions are made in Testosterone \n PEDs and TransDIY are subreddits in which bot "
-                 "comments got removed ")
+
+        with st.expander("See explanation"):
+            st.write("This figure depicts the number of comments according to subreddit. Green color depicts comments "
+                     "which are currently present and haven't been deleted and red color represents the comments which "
+                     "got removed from respective subreddit")
+            st.write(
+                "Most of the brandmentions are made in Testosterone \n PEDs and TransDIY are subreddits in which bot "
+                "comments got removed ")
+
         fig = px.bar(data_frame=df, x="subreddit", color="status",
                      color_discrete_map=color_discrete_map)  # ,y="Status") #pie(df, values='Upvotes',names="Status")
         st.write(fig)
 
     with fig_col2:
         st.markdown("### Accepted vs Removed Comments Bar Chart")
-        st.write("This figure depicts the overview of total comments made by bot on reddit. Green color depicts those "
-                 "comments \n which are currently present on Reddit and red color depict the removed comments")
-        st.write("We can analyze that out of 21 comments 16 comments were accepted in the subreddits and 5 comments "
-                 "were removed by mods")
-        fig = px.bar(data_frame=df, x="status", color="status",color_discrete_map=color_discrete_map)  # ,y="Status") #pie(df, values='Upvotes',names="Status")
+        with st.expander("See explanation"):
+            st.write("This figure depicts the overview of total comments made by bot on reddit. Green color depicts "
+                     "those "
+                     "comments \n which are accepted on subreddit and currently present in the thread and red color "
+                     "depict the removed comments")
+            st.write("We can analyze that out of 21 comments 16 comments were accepted in the subreddits and 5 "
+                     "comments "
+                     "were removed by mods")
+        fig = px.bar(data_frame=df, x="status", color="status",
+                     color_discrete_map=color_discrete_map)  # ,y="Status") #pie(df, values='Upvotes',names="Status")
         st.write(fig)
-
 
     fig_col1, fig_col2 = st.columns(2)
     color_discrete_map = {"Removed": 'red', "Present": "green"}
     with fig_col1:
         st.markdown("### Up votes Ratio in Comments(Present & Removed)")
+        with st.expander("See explanation"):
+            st.write("Pie chart represents the ratio of bot comments accordig to the Up votes")
+            st.write("We can analyze from the figure that almost 87% of the bot comments got upvotes from the "
+                     "redditors and 13% comments got upvotes but they were still removed from the threads")
         fig = px.pie(df, values='upvotes', names="status", color="status",
                      color_discrete_map={'Removed': 'red',
                                          'Present': 'green'}
@@ -136,6 +147,10 @@ with placeholder.container():
 
     with fig_col2:
         st.markdown("### Down votes Ratio in Comments(Present & Removed)")
+        with st.expander("See explanation"):
+            st.write("Pie chart represents the ratio of bot comments accordig to the down votes")
+            st.write("We can analyze from the figure that all of the comment who got down votes were removed "
+                     "from the subreddits")
         fig = px.pie(df, values='downvotes', names="status", color="status",
                      color_discrete_map={'Removed': 'red',
                                          'Present': 'green'}
