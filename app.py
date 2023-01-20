@@ -52,6 +52,13 @@ for status1 in claimed_status:
 
 with placeholder.container():
     # job_filter = st.selectbox("Select the Job", pd.unique(df["subreddit"]))
+    # df_refined = df[["body"]]
+    # for index, row in df_refined.iterrows():
+    #     # print()
+    #     with st.expander("See explanation"):
+    #         st.write(row['body'])
+
+
     # create three columns
     kpi_totalComments, kpi_Accepted_Comments, kpi_Removed_Comments = st.columns(3)
 
