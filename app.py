@@ -24,7 +24,7 @@ def get_data() -> pd.DataFrame:
 df = get_data()
 
 # dashboard title
-st.title("Reddit Brandmention Comment Analysis Dashboard")
+st.title("Angkasa Pura 2 Social media Sentiment Analysis Dashboard 01")
 st.write("Date Range: 12/15/2022 - 01/06/2023")
 
 # creating a single-element container
@@ -63,27 +63,27 @@ with placeholder.container():
     kpi_totalComments, kpi_Accepted_Comments, kpi_Removed_Comments = st.columns(3)
 
     kpi_totalComments.metric(
-        label="Comments by Bot",
+        label="Total Comments for Angkasa Pura 2",
         value=len(comment_status),
     )
 
     kpi_Accepted_Comments.metric(
-        label="Accpeted Comments",
+        label="Positive Sentiment Comments for AP2",
         value=accepted_comments,
     )
 
     kpi_Removed_Comments.metric(
-        label="Removed Comments",
+        label="Negative Sentiment commentsfor AP2",
         value=removed_comments,
     )
 
     # kpi_claimed.metric(
-    #     label="Total Gifts Claimed",
+    #     label="Total Comments for Soekarno Hatta Airport",
     #     value=total_claimed,
     # )
     #
     # kpi_claimed_percentage.metric(
-    #     label="Gift Claim %",
+    #     label="Total Comments for Kualanamu Airport",
     #     value=round((total_claimed/len(comment_status))*100),
     # )
 
@@ -110,56 +110,46 @@ with placeholder.container():
     # color_discrete_map = {"Removed": 'red', "Present": "green"}
     color_discrete_map = {"Removed": 'red', "Present": "green"}
     with fig_col1:
-        st.markdown("### Comment status according to subreddit")
+        st.markdown("### Comment status according to Search Engine (Google, Bing,etc)")
 
         with st.expander("See explanation"):
-            st.write("This figure depicts the number of comments according to subreddit. Green color depicts comments "
-                     "which are currently present and haven't been deleted and red color represents the comments which "
-                     "got removed from respective subreddit")
+            st.write("This figure depicts the number of people comments according to Search Engine.")
             st.write(
-                "Most of the brandmentions are made in Testosterone")
-            st.write("PEDs and TransDIY are subreddits in which bot "
-                "comments got removed ")
+                "Those comments are all about Angkasa Pura 2 Services")
 
-        fig = px.bar(data_frame=df, x="subreddit", color="status",
+
+        fig = px.bar(data_frame=df, x="Comments from Search Engine", color="status",
                      color_discrete_map=color_discrete_map)  # ,y="Status") #pie(df, values='Upvotes',names="Status")
         st.write(fig)
 
     with fig_col2:
-        st.markdown("### Accepted vs Removed Comments Bar Chart")
+        st.markdown("### Comment Status from Social media (Tiktok, Youtube,etc))
         with st.expander("See explanation"):
-            st.write("This figure depicts the overview of total comments made by bot on reddit. Green color depicts "
-                     "those "
-                     "comments \n which are accepted on subreddit and currently present in the thread and red color "
-                     "depict the removed comments")
-            st.write("We can analyze that out of 21 comments 16 comments were accepted in the subreddits and 5 "
-                     "comments "
-                     "were removed by mods")
+            st.write("This figure depicts the overview of total people comments made on social media regarding to Angkasa Pura 2 services.")
+
         fig = px.bar(data_frame=df, x="status", color="status",
-                     color_discrete_map=color_discrete_map)  # ,y="Status") #pie(df, values='Upvotes',names="Status")
+                     color_discrete_map=color_discrete_map)  # ,y="Social media Commment Status") #pie(df, values='Upvotes',names="Status")
         st.write(fig)
 
     fig_col1, fig_col2 = st.columns(2)
     color_discrete_map = {"Removed": 'red', "Present": "green"}
     with fig_col1:
-        st.markdown("### Up votes Ratio in Comments(Present & Removed)")
+        st.markdown("### Soekarno-Hatta Airport services in Comments")
         with st.expander("See explanation"):
-            st.write("Pie chart represents the ratio of bot comments accordig to the Up votes")
-            st.write("We can analyze from the figure that almost 87% of the bot comments got upvotes from the "
-                     "redditors and 13% comments got upvotes but they were still removed from the threads")
-        fig = px.pie(df, values='upvotes', names="status", color="status",
+            st.write("Pie chart represents the ratio of people comments with regards to Soekarno Hatta Airport services")
+            s
+        fig = px.pie(df, values='upvotes', names="Comment status for Soekarno Hatta Airport", color="status",
                      color_discrete_map={'Removed': 'red',
                                          'Present': 'green'}
                      )
         st.write(fig)
 
     with fig_col2:
-        st.markdown("### Down votes Ratio in Comments(Present & Removed)")
+        st.markdown("### Kualanamu Airport services in Comments")
         with st.expander("See explanation"):
-            st.write("Pie chart represents the ratio of bot comments accordig to the down votes")
-            st.write("We can analyze from the figure that all of the comment who got down votes were removed "
-                     "from the subreddits")
-        fig = px.pie(df, values='downvotes', names="status", color="status",
+            st.write("Pie chart represents the ratio of people comments regarding to Kualanamu Airport services")
+            s
+        fig = px.pie(df, values='downvotes', names="Comment status for Kualanamu Airprot", color="status",
                      color_discrete_map={'Removed': 'red',
                                          'Present': 'green'}
                      )
