@@ -122,7 +122,7 @@ with placeholder.container():
         st.markdown("### Kualanamu Airport services in Comments")
         with st.expander("See explanation"):
             st.write("Pie chart represents the ratio of people comments regarding to Kualanamu Airport services")
-            s
+       
         fig = px.pie(df, values='downvotes', names="status", color="status",
                      color_discrete_map={'Removed': 'red',
                                          'Present': 'green'}
