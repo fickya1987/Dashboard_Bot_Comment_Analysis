@@ -77,32 +77,6 @@ with placeholder.container():
         value=removed_comments,
     )
 
-    # kpi_claimed.metric(
-    #     label="Total Comments for Soekarno Hatta Airport",
-    #     value=total_claimed,
-    # )
-    #
-    # kpi_claimed_percentage.metric(
-    #     label="Total Comments for Kualanamu Airport",
-    #     value=round((total_claimed/len(comment_status))*100),
-    # )
-
-    kpi_upvotes, kpi_downvotes, kpi_gift_claimed = st.columns(3)
-    # fill in those three columns with respective metrics or KPIs
-    kpi_upvotes.metric(
-        label="Upvotes",
-        value=np.sum(upvotes),
-    )
-
-    kpi_downvotes.metric(
-        label="Downvotes",
-        value=np.sum(downvotes),
-    )
-
-    kpi_gift_claimed.metric(
-        label="Gifts Claimed",
-        value=total_claimed,
-    )
 
     # create two columns for charts
 
