@@ -6,7 +6,7 @@ import plotly.express as px  # interactive charts
 import streamlit as st  # 🎈 data web app development
 
 st.set_page_config(
-    page_title="Dashboard Bot Analysis",
+    page_title="Angkasa Pura 2 Sentiment Analysis Dashboard",
     page_icon="✅",
     layout="wide",
 )
@@ -92,7 +92,7 @@ with placeholder.container():
                 "Those comments are all about Angkasa Pura 2 Services")
 
 
-        fig = px.bar(data_frame=df, x="Comments from Search Engine", color="status",
+        fig = px.bar(data_frame=df, x="status", color="status",
                      color_discrete_map=color_discrete_map)  # ,y="Status") #pie(df, values='Upvotes',names="Status")
         st.write(fig)
 
@@ -102,7 +102,7 @@ with placeholder.container():
             st.write("This figure depicts the overview of total people comments made on social media regarding to Angkasa Pura 2 services.")
 
         fig = px.bar(data_frame=df, x="status", color="status",
-                     color_discrete_map=color_discrete_map)  # ,y="Social media Commment Status") #pie(df, values='Upvotes',names="Status")
+                     color_discrete_map=color_discrete_map)  # ,y="Status") #pie(df, values='Upvotes',names="Status")
         st.write(fig)
 
     fig_col1, fig_col2 = st.columns(2)
