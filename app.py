@@ -123,7 +123,7 @@ with placeholder.container():
         st.write(fig)
 
     with fig_col2:
-        st.markdown("### Comment Status from Social media (Tiktok, Youtube,etc))
+        st.markdown("### Comment Status from Social media (Tiktok, Youtube,etc)")
         with st.expander("See explanation"):
             st.write("This figure depicts the overview of total people comments made on social media regarding to Angkasa Pura 2 services.")
 
